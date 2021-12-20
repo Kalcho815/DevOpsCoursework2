@@ -1,0 +1,30 @@
+
+- name: A playbook to install Kubectl, Minikube
+  hosts: localhost
+  user: ubuntu
+
+  tasks:
+  - name: 7. Install Conntrack
+    become: yes
+    apt:
+      update_cache: yes
+      name: conntrack
+  - name: 8. Install minikube
+    become: yes
+    get_url:
+      url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+      dest: /home/ubuntu/DevOpsCoursework2/Ansible
+  - name: 9. Make executable
+    file:
+      path: /home/ubuntu/DevOpsCoursework2/Ansible/minikube
+      owner: ubuntu
+      group: ubuntu
+      mode: "777"
+  - name: 10. Move file
+    copy:
+      src: minikube
+      dest: /usr/local/bin/
+  - name: 11. Start minikube
+    shell:
+      cmd: minikube start
+

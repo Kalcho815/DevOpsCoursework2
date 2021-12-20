@@ -1,0 +1,14 @@
+- name: A playbook to deploy the image
+  user: ubuntu
+  hosts: localhost
+
+  tasks:
+  - name: 12. Create Deployment 
+    shell:
+      cmd: kubectl create deployment coursework2 --image=kalcho815/coursework2:1.0
+  - name: 13. Expose Service
+    shell:
+      cmd: kubectl expose deployment/coursework2 --type="NodePort" --port 8080 --name coursework2-service
+  - name: 14. Scale Deployment
+    shell:
+      cmd: kubectl scale deployments/coursework2 --replicas=4
