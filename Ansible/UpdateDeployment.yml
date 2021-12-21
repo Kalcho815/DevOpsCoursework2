@@ -1,6 +1,6 @@
 - name: A playbook to deploy the image
   user: ubuntu
-  hosts: localhost
+  hosts: webservers
 
   tasks:
   - name: 15. Create Deployment
