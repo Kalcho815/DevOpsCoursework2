@@ -1,8 +1,0 @@
-- name: A playbook to deploy the image
-  user: ubuntu
-  hosts: webservers
-
-  tasks:
-  - name: 15. Create Deployment
-    shell:
-      cmd: sudo kubectl set image deployments/coursework2 coursework2=kalcho815/coursework2:latest
